@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <title>新闻资讯 - 新闻</title>
+    <!--<link rel="stylesheet" href="css/common.css">-->
+    <link rel="stylesheet" href="{$ym_theme_path}/css/common.css">
+    <link rel="stylesheet" href="{$ym_theme_path}/css/style.css">
+    <link rel="stylesheet" href="{$ym_theme_path}/css/response.css">
+    <script src="{$ym_theme_path}/js/jquery-3.3.1.min.js"></script>
+    <script src="{$ym_theme_path}/js/common.js"></script>
+</head>
+<body>
+<!--******************************************header start***************************************************-->
+<header>
+    <div class="header_top">
+
+        <div class="header_topNav clearfix">
+            <div class="logo">
+                <h1><a href="#"><img src="{$ym_theme_path}/image/logo.png"></a></h1>
+            </div>
+            <!--pc端导航-->
+            <ul class="clearfix firstNav">
+                <li><a href="#">新浪新闻</a></li>
+                <li><a href="#">新闻</a></li>
+                <li><a href="#">体育</a></li>
+                <li><a href="#">财经</a></li>
+                <li><a href="#">娱乐</a></li>
+                <li><a href="#">科技</a></li>
+                <li><a href="#">博客</a></li>
+                <li><a href="#">图片</a></li>
+                <li><a href="#">专栏</a></li>
+                <li class="lastClass">
+                    <a class="more" href="#">更多<i class="iconfont icon-xiala"></i></a>
+                    <ul class="clearfix downClass">
+                        <li>
+                            <a href="#">汽车</a>
+                            <a href="#">教育</a>
+                            <a href="#">时尚</a>
+                            <a href="#">女性</a>
+                            <a href="#">星座</a>
+                            <a href="#">健康</a>
+                        </li>
+                        <li>
+                            <a href="#">育儿</a>
+                            <a href="#">读书</a>
+                            <a href="#">房产</a>
+                            <a href="#">历史</a>
+                            <a href="#">视频</a>
+                            <a href="#">收藏</a>
+                        </li>
+                        <li>
+                            <a href="#">佛学</a>
+                            <a href="#">游戏</a>
+                            <a href="#">旅游</a>
+                            <a href="#">邮箱</a>
+                            <a href="#">导航</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!--移动端导航-->
+            <div class="slideDown">
+                <i class="iconfont icon-daohang"></i>
+            </div>
+
+            <div class="mobileNav">
+                <ul class="clearfix">
+                    <li><a href="#">新闻</a></li>
+                    <li><a href="#">体育</a></li>
+                    <li><a href="#">财经</a></li>
+                    <li><a href="#">娱乐</a></li>
+                    <li><a href="#">科技</a></li>
+                    <li><a href="#">博客</a></li>
+                    <li><a href="#">图片</a></li>
+                    <li><a href="#">专栏</a></li>
+                    <li><a href="#">汽车</a></li>
+                    <li><a href="#">教育</a></li>
+                    <li><a href="#">时尚</a></li>
+                    <li><a href="#">女性</a></li>
+                    <li><a href="#">星座</a></li>
+                    <li><a href="#">健康</a></li>
+                    <li><a href="#">房产</a></li>
+                    <li><a href="#">历史</a></li>
+                    <li><a href="#">视频</a></li>
+                    <li><a href="#">收藏</a></li>
+                    <li><a href="#">育儿</a></li>
+                    <li><a href="#">读书</a></li>
+                    <li><a href="#">佛学</a></li>
+                    <li><a href="#">游戏</a></li>
+                    <li><a href="#">旅游</a></li>
+                    <li><a href="#">邮箱</a></li>
+                    <li><a href="#">导航</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="header_middle clearfix">
+        <div class="logo">
+            <h1><a href="#"><img src="{$ym_theme_path}image/logo.png"></a></h1>
+        </div>
+        <div class="header_middleRight">
+            <form class="clearfix formSelect">
+                <div class="select_box"  id="select">
+                    <div class="select" >
+                        <div class="showText">新闻</div>
+                        <i class="iconfont icon-xiala"></i>
+                    </div>
+                    <div class="select_down">
+                        <p>新闻</p>
+                        <p>图片</p>
+                        <p>博客</p>
+                        <p>视频</p>
+                    </div>
+                </div>
+                <div class="form_input">
+                    <input type="text">
+                </div>
+                <div class="form_search">
+                    <i class="iconfont icon-sousuo"></i>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="header_bottom">
+        <div class="nav">
+            <ul class="clearfix">
+                <ul class="clearfix">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">国内</a></li>
+                    <li><a href="#">国际</a></li>
+                    <li><a href="#">社会</a></li>
+                    <li><a href="#">军事</a></li>
+                    <li><a href="#">文化</a></li>
+                    <li><a href="#">政务</a></li>
+                    <li><a href="#">黑猫投诉</a></li>
+                    <li><a href="#">视频</a></li>
+                    <li><a href="#">图片</a></li>
+                </ul>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<!--******************************************header end**************************************************-->
+
+<!--******************************************news list start******************************************-->
+    <div class="wrapList clearfix">
+        <div class="listLeft">
+            <ul>
+                <li>
+                    <div class="listBox clearfix">
+                        <div class="listTitle"><h2><a href="#">毒鼠强投毒”案致1死1伤 疑犯喊冤14年获再审</a></h2></div>
+                        <div class="listCon clearfix">
+                            <div class="listImg"><a href="#"><img src="{$ym_theme_path}/image/l_newlist.jpg"></a></div>
+                            <p><a href="#">原标题：河南民权“毒鼠强投毒”案致一死一伤 疑犯喊冤14年获再审 2018年10月3日，吴莉莉收到最高人民法院的《再审决定书》。 逐字逐句读到文末</a></p>
+                        </div>
+                    </div>
+                    <div class="listTime clearfix">
+                        <div>35分钟前</div>
+                        <div class="listTags">
+                            <a href="#">破案记录</a>
+                            <a href="#">投毒</a>
+                            <a href="#">吴春红</a>
+                        </div>
+                        <div class="listComment"><a href="#">评论</a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBox clearfix">
+                        <div class="listTitle"><h2><a href="#">毒鼠强投毒”案致1死1伤 疑犯喊冤14年获再审</a></h2></div>
+                        <div class="listCon clearfix">
+                            <p><a href="#">原标题：河南民权“毒鼠强投毒”案致一死一伤 疑犯喊冤14年获再审 2018年10月3日，吴莉莉收到最高人民法院的《再审决定书》。 逐字逐句读到文末</a></p>
+                        </div>
+                    </div>
+                    <div class="listTime clearfix">
+                        <div>35分钟前</div>
+                        <div class="listTags">
+                            <a href="#">破案记录</a>
+                            <a href="#">投毒</a>
+                            <a href="#">吴春红</a>
+                        </div>
+                        <div class="listComment"><a href="#">评论</a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBox clearfix">
+                        <div class="listTitle"><h2><a href="#">毒鼠强投毒”案致1死1伤 疑犯喊冤14年获再审</a></h2></div>
+                        <div class="listCon clearfix">
+                            <p><a href="#">原标题：河南民权“毒鼠强投毒”案致一死一伤 疑犯喊冤14年获再审 2018年10月3日，吴莉莉收到最高人民法院的《再审决定书》。 逐字逐句读到文末</a></p>
+                        </div>
+                    </div>
+                    <div class="listTime clearfix">
+                        <div>35分钟前</div>
+                        <div class="listTags">
+                            <a href="#">破案记录</a>
+                            <a href="#">投毒</a>
+                            <a href="#">吴春红</a>
+                        </div>
+                        <div class="listComment"><a href="#">评论</a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBox clearfix">
+                        <div class="listTitle"><h2><a href="#">毒鼠强投毒”案致1死1伤 疑犯喊冤14年获再审</a></h2></div>
+                        <div class="listCon clearfix">
+                            <p><a href="#">原标题：河南民权“毒鼠强投毒”案致一死一伤 疑犯喊冤14年获再审 2018年10月3日，吴莉莉收到最高人民法院的《再审决定书》。 逐字逐句读到文末</a></p>
+                        </div>
+                    </div>
+                    <div class="listTime clearfix">
+                        <div>35分钟前</div>
+                        <div class="listTags">
+                            <a href="#">破案记录</a>
+                            <a href="#">投毒</a>
+                            <a href="#">吴春红</a>
+                        </div>
+                        <div class="listComment"><a href="#">评论</a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBox clearfix">
+                        <div class="listTitle"><h2><a href="#">毒鼠强投毒”案致1死1伤 疑犯喊冤14年获再审</a></h2></div>
+                        <div class="listCon clearfix">
+
+                            <p><a href="#">原标题：河南民权“毒鼠强投毒”案致一死一伤 疑犯喊冤14年获再审 2018年10月3日，吴莉莉收到最高人民法院的《再审决定书》。 逐字逐句读到文末</a></p>
+                        </div>
+                    </div>
+                    <div class="listTime clearfix">
+                        <div>35分钟前</div>
+                        <div class="listTags">
+                            <a href="#">破案记录</a>
+                            <a href="#">投毒</a>
+                            <a href="#">吴春红</a>
+                        </div>
+                        <div class="listComment"><a href="#">评论</a></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="listBox clearfix">
+                        <div class="listTitle"><h2><a href="#">毒鼠强投毒”案致1死1伤 疑犯喊冤14年获再审</a></h2></div>
+                        <div class="listCon clearfix">
+                            <div class="listImg"><a href="#"><img src="{$ym_theme_path}/image/l_newlist.jpg"></a></div>
+                            <p><a href="#">原标题：河南民权“毒鼠强投毒”案致一死一伤 疑犯喊冤14年获再审 2018年10月3日，吴莉莉收到最高人民法院的《再审决定书》。 逐字逐句读到文末</a></p>
+                        </div>
+                    </div>
+                    <div class="listTime clearfix">
+                        <div>35分钟前</div>
+                        <div class="listTags">
+                            <a href="#">破案记录</a>
+                            <a href="#">投毒</a>
+                            <a href="#">吴春红</a>
+                        </div>
+                        <div class="listComment"><a href="#">评论</a></div>
+                    </div>
+                </li>
+
+            </ul>
+            <!--分页 start-->
+            <div class="page">
+                <p>
+                    <a href="#">上一页</a>
+                    <a href="#" class="pageOn">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">下一页</a>
+                    <a href="#">下5页</a>
+                </p>
+            </div>
+            <!--分页 end-->
+        </div>
+
+        <div class="listRight">
+            <!--排行榜 start-->
+            <div class="Rankings">
+                <h2 class="moduleTitle">热点排行</h2>
+                <ul>
+                    <li class="clearfix"><span class="spanColor">01</span><span><a href="#">警方通报妻子带儿女为夫殉情事件:丈夫为骗保假死</a></span></li>
+                    <li class="clearfix"><span class="spanColor">02</span><span><a href="#">警方通报妻子带儿女为夫殉情事件:丈夫为骗保假死</a></span></li>
+                    <li class="clearfix"><span class="spanColor">03</span><span><a href="#">00后准备好上大学了吗?他们行李箱的装的都是这些</a></span></li>
+                    <li class="clearfix"><span>04</span><span><a href="#">儿子欠下大笔债务跑路 母亲拿警察丈夫抚恤金还债</a></span></li>
+                    <li class="clearfix"><span>05</span><span><a href="#">学生牛奶疑存安全隐患 教体局要求班主任先试喝</a></span></li>
+                    <li class="clearfix"><span>06</span><span><a href="#">男子频遭家暴欲离婚被妻子在法院刺伤臀部</a></span></li>
+                    <li class="clearfix"><span>07</span><span><a href="#">男子频遭家暴欲离婚被妻子在法院刺伤臀部</a></span></li>
+                    <li class="clearfix"><span>08</span><span><a href="#">女童玩游戏12天花掉13万 “土豪排行榜”上排第一</a></span></li>
+                    <li class="clearfix"><span>09</span><span><a href="#">美国女孩患病致面部变形试图自杀 遇爱情重获新生</a></span></li>
+                    <li class="clearfix"><span>10</span><span><a href="#">河南一名高二学生参与群殴重伤 未脱离生命危险</a></span></li>
+                </ul>
+            </div>
+            <!--排行榜 end-->
+
+            <!--图文横排 start-->
+            <div class="Confounding">
+                <h2 class="moduleTitle">独家策划</h2>
+                <ul>
+                    <li class="clearfix"><a href="#"><img src="{$ym_theme_path}/image/list.jpg"></a><p><a href="#">警方通报妻子带儿女为夫殉情事件:丈夫为骗保假死</a><span>2018-08-29</span></p></li>
+                    <li class="clearfix"><a href="#"><img src="{$ym_theme_path}/image/list.jpg"></a><p><a href="#">警方通报妻子带儿女为夫殉情事件:丈夫为骗保假死</a><span>2018-08-29</span></p></li>
+                    <li class="clearfix"><a href="#"><img src="{$ym_theme_path}/image/list.jpg"></a><p><a href="#">00后准备好上大学了吗?他们行李箱的装的都是这些</a><span>2018-08-29</span></p></li>
+                    <li class="clearfix"><a href="#"><img src="{$ym_theme_path}/image/list.jpg"></a><p><a href="#">儿子欠下大笔债务跑路 母亲拿警察丈夫抚恤金还债</a><span>2018-08-29</span></p></li>
+                    <li class="clearfix"><a href="#"><img src="{$ym_theme_path}/image/list.jpg"></a><p><a href="#">学生牛奶疑存安全隐患 教体局要求班主任先试喝</a><span>2018-08-29</span></p></li>
+                </ul>
+            </div>
+            <!--图文横排 end-->
+            
+            <!--广告位 start-->
+            <div class="advertise">
+                <a href="#"><img src="{$ym_theme_path}image/list.jpg"></a>
+            </div>
+            <!--广告位 end-->
+            
+            <!--图文竖排 start-->
+            <div class="vertical">
+                <h2 class="moduleTitle">原创节目</h2>
+                <ul>
+                    <li><a href="#"><img src="{$ym_theme_path}image/list.jpg"></a><p><a href="#">警方通报妻子带儿女为夫殉情事件:丈夫为骗保假死丈夫为骗保假死</a></p></li>
+                    <li><a href="#"><img src="{$ym_theme_path}image/list.jpg"></a><p><a href="#">警方通报妻子带儿女为夫殉情事件:丈夫为骗保假死</a></p></li>
+                    <li><a href="#"><img src="{$ym_theme_path}image/list.jpg"></a><p><a href="#">00后准备好上大学了吗?他们行李箱的装的都是这些</a></p></li>
+                </ul>
+            </div>
+            <!--图文竖排 end-->
+
+            <!--图片 start-->
+            <div class="allAre">
+                <h2 class="moduleTitle">时尚美搭</h2>
+                <ul class="clearfix">
+                    <li><a href="#"><img src="{$ym_theme_path}image/list.jpg"></a><p class="ellipsis"><a href="#"  class="ellipsis">警方通报妻子带儿女为夫殉情事件:丈夫为骗保假死丈夫为骗保假死</a></p></li>
+                    <li><a href="#"><img src="{$ym_theme_path}image/list.jpg"></a><p class="ellipsis"><a href="#"  class="ellipsis">警方通报妻子带儿女为夫殉情事件:丈夫为骗保假死</a></p></li>
+                    <li><a href="#"><img src="{$ym_theme_path}image/list.jpg"></a><p class="ellipsis"><a href="#"  class="ellipsis">00后准备好上大学了吗?他们行李箱的装的都是这些</a></p></li>
+                    <li><a href="#"><img src="{$ym_theme_path}image/list.jpg"></a><p class="ellipsis"><a href="#"  class="ellipsis">00后准备好上大学了吗?他们行李箱的装的都是这些</a></p></li>
+                </ul>
+            </div>
+            <!--图片 end-->
+        </div>
+    </div>
+<!--******************************************news list end******************************************-->
+
+
+<!--******************************************footer start**************************************************-->
+<footer>
+    <!--合作媒体 start-->
+    <div class="cooperation">
+        <h2>合作媒体</h2>
+        <div class="mediaBox">
+            <a href="#">中国政府网</a>|<a href="#">中国网</a>|<a href="#">人民网</a>|<a href="#">新华网</a>|<a href="#">中新网</a>|<a href="#">央视网</a>|<a href="#">中广网</a>|<a href="#">中国日网</a>|<a href="#">中客在线</a>|<a href="#">光明网</a>|<a href="#">解放军报</a>|<a href="#">法制日报</a>|<a href="#">中国政府网</a>|<a href="#">中国网</a>|<a href="#">人民网</a>|<a href="#">新华网</a>|<a href="#">中新网</a>|<a href="#">央视网</a>|<a href="#">中广网</a>|<a href="#">中国日网</a>|<a href="#">中客在线</a>|<a href="#">光明网</a>|<a href="#">解放军报</a>|<a href="#">法制日报</a>|<a href="#">中国政府网</a>|<a href="#">中国网</a>|<a href="#">人民网</a>|<a href="#">新华网</a>|<a href="#">中新网</a>|<a href="#">央视网</a>|<a href="#">中广网</a>|<a href="#">中国日网</a>|<a href="#">中客在线</a>|<a href="#">光明网</a>|<a href="#">解放军报</a>|<a href="#">法制日报</a>|<a href="#">中国政府网</a>|<a href="#">中国网</a>|<a href="#">人民网</a>|<a href="#">新华网</a>|<a href="#">中新网</a>|<a href="#">央视网</a>|<a href="#">中广网</a>|<a href="#">中国日网</a>|<a href="#">中客在线</a>|<a href="#">光明网</a>|<a href="#">解放军报</a>|<a href="#">法制日报</a>|
+        </div>
+    </div>
+    <!--合作媒体 end-->
+
+    <!--版权所有 start-->
+    <div class="copyRight">
+        <p>24小时客服热线：4006900000 010-626623378 常见问题解答 互联网违法和不良信息举报</p>
+        <p>违法和不良信息举报电话：010-626623378 举报邮箱：jubao@vip.sina.com</p>
+        <p>新闻中心意见反馈留言板</p>
+        <p><a href="#">新浪简介</a>|<a href="#">About Sina</a>|<a href="#">广告服务</a>|<a href="#">联系我们</a>|<a href="#">招聘信息</a>|<a href="#">网站律师</a>|<a href="#">SINA English</a>|<a href="#">通行证注册</a>|<a href="#">产品答疑</a></p>
+        <p>Copyright © 1996-2015 SINA Corporation. All Rights Reserved </p>
+        <p>新浪公司 版权所有</p>
+    </div>
+    <!--版权所有 end-->
+</footer>
+<!--******************************************footer end**************************************************-->
+</body>
+
+
+</html>

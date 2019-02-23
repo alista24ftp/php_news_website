@@ -1,0 +1,87 @@
+{include file="public:head" /}
+<section class="derived-banner">
+    <div class="container">
+        <div class="met-banner   banner-ny-h" data-height='' style=''>
+
+            {yf:ads name="home_slides" cid="5" /}
+            {foreach name="home_slides" key="k" item="vo"}
+            <div class="slick-slide">
+                <img class="cover-image" src="{$vo.plug_ad_pic|get_imgurl}"  sizes="(max-width: 767px) 767px" alt="{$vo.plug_ad_name}">
+
+            </div>
+            {/foreach}
+
+        </div>
+    </div>
+</section>
+
+<section class="met-news animsition ">
+    <div class="container">
+
+        <div class="col-md-9 met-news-body">
+            <div class="row">
+                <div class="met-news-list">
+
+                    <ul class="met-page-ajax" data-scale=''>
+                        {volist name="lists['news']" id="vo"}
+                        <li>
+                            <h4>
+                                <a href="{:url('home/News/index',array('id'=>$vo['n_id']))}" title="{$vo.news_title}" target='_self'>
+                                    {$vo.news_title}
+                                </a>
+                            </h4>
+                            <p class="des">&nbsp;{$vo.news_content|html_trim=100}</p>
+                            <p class="info">
+                                <span>{$vo.news_time|date="Y-m-d",###}</span>
+                                <span>{$vo.member_list_nickname|default=$vo.member_list_username}</span>
+                                <span><i class="icon wb-eye margin-right-5" aria-hidden="true"></i>{$vo.news_hits}</span>
+                            </p>
+                        </li>
+                        {/volist}
+                    </ul>
+
+                    <div class="hidden-xs">
+                        <div class='met_pager'>
+                            {$page_html}
+                        </div>
+                    </div>
+                    <div class="met-page-ajax-body visible-xs-block invisible" data-plugin="appear" data-animate="slide-bottom" data-repeat="false">
+                        <button type="button" class="btn btn-default btn-block btn-squared ladda-button" id="met-page-btn" data-style="slide-left" data-url="/muban/res023/370/inform/?lang=cn&class1=4&class2=0&class3=0&mbpagelist=1" data-page="1"><i class="icon wb-chevron-down margin-right-5" aria-hidden="true"></i>更多文章</button>
+                    </div>
+                    <!-- -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="met-news-bar">
+
+                    <div class="recommend news-list-md">
+                        <h3>为您推荐</h3>
+                        <ul class="list-group list-group-bordered">
+                            {yf:news name="last_post" cid="1,2,3,4" field="news_title,news_time,news_scontent,n_id,news_img" limit="5" order="news_time desc" /}
+                            {foreach name="last_post" item="vo"}
+                            <li class="list-group-item"><a href="{:url('home/News/index',array('id'=>$vo['n_id']))}" title="{$vo.news_title|msubstr=0,20}" target='_self'>{$vo.news_title|msubstr=0,12}</a></li>
+                            {/foreach}
+                        </ul>
+                    </div><br>
+
+                    <div class="recommend news-list-md">
+                        <h3>热门文章</h3>
+                        <ul class="list-group list-group-bordered">
+                            {yf:news name="hot_articles" cid="5,6,15" field="news_title,news_time,news_scontent,n_id,news_img" limit="5" order="news_hits desc" /}
+                            {foreach name="hot_articles" item="vo"}
+                            <li class="list-group-item"><a href="{:url('home/News/index',array('id'=>$vo['n_id']))}" title="{$vo.news_title|msubstr=0,20}" target='_self'>{$vo.news_title|msubstr=0,12}</a></li>
+                            {/foreach}
+
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{include file="public:footer" /}

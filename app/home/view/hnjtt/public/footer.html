@@ -1,0 +1,57 @@
+<div class="met-footnav text-center">
+    <div class="container">
+        <div class="row mob-masonry">
+            <div class="col-md-8 col-xs-12 footnav-left clearfix">
+                {php}$links=get_links(2);{/php}
+                {foreach name="links" item="vo"}
+                <div class="col-md-2 col-sm-2 col-xs-6 list masonry-item">
+                    <h4><a href="{$vo.plug_link_url}" target="{$vo.plug_link_target}">{$vo.plug_link_name}</a></h4>
+                </div>
+                {/foreach}
+            </div>
+            <div class="col-md-4 col-xs-12 footnav-right clearfix">
+                <div class="info masonry-item">
+                    <div class="info-right">
+
+
+                        <a id="met-weixin"><i class="fa fa-weixin light-green-700" data-plugin="webuiPopover"  data-animation="pop" data-placement='top' data-width='160' data-padding='0' data-content="<img src='{$ym_theme_path}public/images/jgzx_ewm.jpg' alt='河南省交通运输厅机关服务中心微信公众号二维码' style='width: 100%;display:block;margin:auto;'>"></i></a>
+
+                        <a href="#" rel="nofollow" target="_blank"><i class="fa fa-weibo red-600"></i></a>
+
+                        <span class="phone"><i class="fa fa-phone"></i><span>0371-87166016</span></span>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="met-links">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li>友情链接 :</li>
+            {php}$links=get_links(1);{/php}
+            {foreach name="links" item="vo"}
+            <li><a href="{$vo.plug_link_url}" target="{$vo.plug_link_target}">{$vo.plug_link_name}</a></li>
+            {/foreach}
+        </ol>
+    </div>
+</div>
+
+<footer>
+    <div class="container text-center">
+        <p>{$site_copyright} </p>
+        <p>{$site_icp}</p>
+
+        <div class="powered_by_metinfo">技术支持：<a href="http://www.nongma.net" target="_blank" title="河南云码科技有限公司">河南云码科技</a></div>
+    </div>
+</footer>
+<button type="button" class="btn btn-icon btn-primary btn-squared met-scroll-top hide"><i class="icon wb-chevron-up" aria-hidden="true"></i></button>
+
+
+<script src="{$ym_theme_path}public/js/index.js"></script>
+
+</body>
+</html>

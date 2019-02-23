@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>{$menu.menu_seo_title|default=$site_seo_title}</title>
+    <meta name="renderer" content="webkit">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="generator" content=" {$site_name}"  data-variable="#,cn,10001,,10001,res023" />
+    <meta name="description" content="{$menu.menu_seo_des|default=$site_seo_description}" />
+    <meta name="keywords" content="{$menu.menu_seo_key|default=$site_seo_keywords}" />
+    <link href="#favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel='stylesheet' href='{$ym_theme_path}public/css/index.css'>
+</head>
+<style type="text/css">
+    .btn-outline.btn-primary.active, .btn-outline.btn-primary:active, .btn-outline.btn-primary:focus, .btn-outline.btn-primary:hover, .open>.dropdown-toggle.btn-outline.btn-primary { background-color: #850404!important; border-color: #850404!important; }
+    .btn-outline.btn-primary { color:#fff!important; }
+    .nav-tabs-vertical .nav-tabs>li.active>a, .nav-tabs-vertical .nav-tabs>li.active>a:focus, .nav-tabs-vertical .nav-tabs>li.active>a:hover{
+        border-right-color: #ba1c1c!important;
+        background-color: #ba1c1c!important;
+    }
+    .form-control.focus, .form-control:focus{
+        border-color: #850404!important;
+    }
+    .checkbox-primary input[type="checkbox"]:checked + label::before, .checkbox-primary input[type="radio"]:checked + label::before{
+        background-color: #850404!important;
+        border-color: #850404!important;
+    }
+    .met_pager a.Ahover{
+        border-color: #850404!important;
+        background: #850404!important;
+    }
+    .met-news-bar .recommend .list-group a:hover{
+        color: #850404!important;
+    }
+    .column li a:hover{
+        color: #850404!important;
+    }
+    .met_pager a.Ahover:hover{
+        border-color: #850404!important;
+        background: #850404!important;
+    }
+
+    .pager li>a:focus, .pager li>a:hover{
+        border-color:  #850404!important;
+        color:  #850404!important;
+    }
+    .nav-tabs-line>li.active>a, .nav-tabs-line>li.active>a:focus, .nav-tabs-line>li.active>a:hover{
+        color:#850404!important;
+        border-bottom: 2px solid #850404!important;
+    }
+    .modal-primary .modal-header{
+        background-color:#850404!important;
+    }
+    .radio-primary input[type="radio"]:checked + label::before{
+        border-color: #850404!important;
+    }
+    .btn-primary{
+        background-color:#850404!important;
+        border-color: #850404!important;
+    }
+
+    /*首页*/
+    .top-site .lang-list .met-search-body .search-btn{
+        background: #ba1c1c!important;
+    }
+    .top-site .lang-list li .langlist-item{
+        color:#ba1c1c!important;
+    }
+    /*导航*/
+    .met-nav .navlist{
+        background: #ba1c1c!important;
+    }
+    .met-nav .nav>li>a:hover, .met-nav .dropdown.open>a{
+        background: #850404!important;
+    }
+    .met-nav .nav li .dropdown-toggle.active, .met-nav .dropdown.open .dropdown-toggle{
+        background: #850404!important;
+    }
+    .met-nav .navlist>li>.dropdown-menu{
+        background: #850404!important;
+    }
+    .met-nav .navlist>li>.dropdown-menu a:hover{
+        background: #850404!important;
+    }
+    .met-nav .navlist>li>.dropdown-menu .dropdown-menu{
+        background: #850404!important;
+    }
+    .met-footnav h4 a:hover{
+        color:#850404!important;
+    }
+    .met-footnav .info a:hover i, .met-footnav .info a:focus i{
+        color:#850404!important;
+    }
+    .met-links a:hover{
+        color:#850404!important;
+    }
+    .powered_by_ a{
+        color:#850404!important;
+    }
+    .powered_by_ a:hover{
+        color:#850404!important;
+    }
+    .derived-banner .met-banner .slick-arrow.slick-prev{
+        background: #ba1c1c!important;
+    }
+    .derived-banner .met-banner .slick-arrow.slick-next{
+        background: #ba1c1c!important;
+    }
+    .derived-banner .met-banner .slick-dots li{
+        background: #ba1c1c!important;
+    }
+    .derived-banner .met-banner .slick-dots .slick-active{
+        background: #fff!important;
+    }
+    .met-index-imgnews .news-ul{
+        background: #ba1c1c!important;
+        border-color: #ba1c1c!important;
+    }
+    .met-footnav{
+        background: #ba1c1c!important;
+    }
+    .notice .notice-swiper li a:hover{
+        color:#850404!important;
+    }
+    .notice .notice-title{
+        background: #ba1c1c!important;
+    }
+    .met-index-news .news-h{
+        color:#ba1c1c!important;
+    }
+    .met-index-news .news-h:before{
+        background:#ba1c1c!important;
+    }
+    .met-index-news .title{
+        border-bottom: 1px solid  #ba1c1c!important;
+    }
+    .met-index-news .more a{
+        color:#ba1c1c!important;
+    }
+    .met-index-news .more a:hover{
+        background:#ba1c1c!important;
+        border-color: #ba1c1c!important;
+        color:#fff!important;
+    }
+    .met-index-contact .news-h{
+        color:#ba1c1c!important;
+    }
+    .met-index-contact .news-h:before{
+        background: #ba1c1c!important;
+    }
+    .met-index-contact .title{
+        border-bottom: 1px solid  #ba1c1c!important;
+    }
+    .met-index-contact .more a{
+        color:#ba1c1c!important;
+    }
+    .met-index-contact .info .head h1{
+        color:#ba1c1c!important;
+    }
+    .met-index-contact .more a:hover{
+        background:#ba1c1c!important;
+        border-color: #ba1c1c!important;
+        color:#fff!important;
+    }
+    .met-index-product .news-h{
+        color:#ba1c1c!important;
+    }
+    .met-index-product .news-h:before{
+        background: #ba1c1c!important;
+    }
+    .met-index-product .title{
+        border-bottom: 1px solid  #ba1c1c!important;
+    }
+    .met-index-product .more a{
+        color:#ba1c1c!important;
+    }
+    .met-index-product .more a:hover{
+        background: #ba1c1c!important;
+        border-color: #ba1c1c!important;
+        color:#fff!important;
+    }
+    /*内页*/
+    .met-column-nav .met-column-nav-ul>li a.link:hover, .met-column-nav .met-column-nav-ul>li a.link.active{
+        color:  #850404!important;
+    }
+    .met-product.type-1 h4 a:hover{
+        color:  #850404!important;
+    }
+    .dropdown-menu>li>a:hover{
+        color:  #850404!important;
+    }
+    .met-news ul.met-page-ajax li h4 a:hover{
+        color:  #850404!important;
+    }
+    .met-news-bar .recommend h3{
+        background: #ba1c1c!important;
+    }
+    .met-news-bar ul.column li:nth-child(1){
+        background: #ba1c1c!important;
+    }
+    .met-position.pattern-show a{
+        color:  #850404!important;
+    }
+    .met-download .met-download-list a.btn{
+        color:#fff!important;
+    }
+    .met-download .paralist .met-download-btn{
+        color:#fff!important;
+    }
+    met-job-cvbtn{
+        color:#fff!important;
+    }
+    #met-imgs-carousel .slick-dots li.slick-active{
+        border-color:#850404!important;
+    }
+    .met-index-imgnews .news-ul li a:hover{
+        background-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(#850404), to(transparent));
+        background-image: linear-gradient(to right, transparent, #850404, transparent);
+    }
+    .btn-primary.focus, .btn-primary:focus, .btn-primary:hover{
+        background-color: #850404!important;
+        border-color: #850404!important;
+    }
+
+    .btn-primary.active, .btn-primary:active, .open>.dropdown-toggle.btn-primary{
+        background-color:#850404!important;
+        border-color: #850404!important;
+    }
+    .notice .fa{
+        color:  #ba1c1c!important;
+    }
+    .met-position a:hover, .met-position a:focus, .met-position a:active{
+        color: #850404!important;
+    }
+    .met-position .breadcrumb li:before{
+        color: #850404!important;
+    }
+    .met-index-news .news-list li a:hover{
+        color: #850404!important;
+    }
+</style>
+
+
+<body>
+<!--[if lte IE 8]>
+<div class="text-center padding-top-50 padding-bottom-50 bg-blue-grey-100">
+    <p class="browserupgrade font-size-18">你正在使用一个<strong>过时</strong>的浏览器。请<a href="http://browsehappy.com/" target="_blank">升级您的浏览器</a>，以提高您的体验。</p>
+</div>
+<![endif]-->
+<nav class="navbar navbar-default met-nav" role="navigation" style="background-size: cover;background-position:center;background-color:#ffffff;">
+    <div class="navbar-header">
+        <div class="container dropup">
+            <button type="button" class="navbar-toggle hamburger hamburger-close collapsed"
+                    data-target="#navbar-default-collapse" data-toggle="collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="hamburger-bar"></span>
+            </button>
+            <a href="{:url('home/Index/index')}" class="navbar-brand navbar-logo vertical-align" title="{$site_name}">
+                <h1 class='hide'>{$site_name} </h1>
+                <div class="vertical-align-middle"><img src="{$site_logo|get_imgurl}" alt="{$site_name} " title="{$site_name} " /></div>
+            </a>
+
+            <div class="met-langlist  margin-top-10 text-center top-site navbar-right">
+                <div class="inline-block dropup">
+                    <ul class="lang-list clearfix" >
+
+
+                        <li>
+                            <div class="met-search-body">
+                                <form method='get' class="page-search-form" role="search" action='{:url('home/Listn/search')}'>
+                                <div class="input-search">
+                                    <button class="search-btn" type="submit"><i class="fa fa-search"></i></button>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            name="keyword"
+                                            value="{:input('keyword')}"
+                                            placeholder="搜索"
+                                            data-fv-notempty = "true"
+                                            data-fv-message = "不能为空"
+                                    >
+                                </div>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <h2 class='hide'></h2>
+
+        </div>
+    </div>
+    <div class="collapse navbar-collapse navbar-collapse-toolbar" id="navbar-default-collapse">
+        <div class="container">
+            <ul class="nav navbar-nav navlist" >
+                {volist name="menu_list" id="vo"}
+                <li class="dropdown margin-left-0">
+                    <a
+                            class="dropdown-toggle link {if $vo.id
+                            ==3}active{else}{/if}"
+                            data-toggle="dropdown"
+                            data-hover="dropdown"
+                            {if $vo.menu_type==1}
+                            href="{:url('home/index/index')}"
+                            {else}
+                            href="{:url('home/listn/index', ['id' =>$vo.id])}"
+                            {/if}
+                            aria-expanded="false"
+                            title="{$vo.menu_name}"
+                    >{$vo.menu_name}<i class="fa fa-caret-down"></i></a>
+                    <!--
+                    <ul class="dropdown-menu dropdown-menu-right maxNavlist">
+
+                        <li><a href="../news/news.php?lang=cn&class2=108" class=" nav2list"  title="信息公开">信息公开</a></li>
+
+                    </ul>-->
+                </li>
+                {/volist}
+            </ul>
+
+        </div>
+    </div>
+
+</nav>

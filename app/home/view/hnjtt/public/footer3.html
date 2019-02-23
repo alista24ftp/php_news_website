@@ -1,0 +1,80 @@
+<a id="scrollUp" href="#top" style=""><img src="{$ym_theme_path}images/top.png" alt=""></a>
+
+
+{include file="public:ad_modal" /}
+<script type="text/javascript">
+    function getScrollbarWidth() {
+        var odiv = document.createElement('div'),//创建一个div
+            styles = {
+                width: '100px',
+                height: '100px',
+                overflowY: 'scroll'//让他有滚动条
+            }, i, scrollbarWidth;
+        for (i in styles) odiv.style[i] = styles[i];
+        document.body.appendChild(odiv);//把div添加到body中
+        scrollbarWidth = odiv.offsetWidth - odiv.clientWidth;//相减
+        odiv.remove();//移除创建的div
+        return scrollbarWidth;//返回滚动条宽度
+    }
+    ifvisible.setIdleDuration(30);
+    ifvisible.idle(function(){
+        $("body").css({overflow:"hidden","padding-right":getScrollbarWidth()+"px"})
+        $(".model").css({display:"flex"});
+        $(".model_bg").css({display:"block"});
+    });
+    ifvisible.wakeup(function(){
+//        $(".main").css({opacity:1});
+    });
+    function del(){
+        $(".model").css({display:"none"});
+        $(".model_bg").css({display:"none"});
+        $("body").css({overflow:"auto","padding-right":0})
+    }
+</script>
+
+
+
+
+
+<script>
+    $(function () {
+        $(window).scroll(function(){
+            if ($(window).scrollTop()>100){
+                $("#scrollUp").fadeIn(500);
+            }
+            else
+            {
+                $("#scrollUp").fadeOut(500);
+            }
+        });
+        //当点击跳转链接后，回到页面顶部位置
+        $("#scrollUp").click(function(){
+            $('body,html').animate({scrollTop:0},1000);
+            return false;
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(".slideTxtBox").slide({effect:"fade",easing:"easeOutQuint",delayTime:500,autoPlay:true} );
+
+    $(".nav_show").click(function(){
+        $(this).toggleClass("show");
+        $(".nav ul").toggleClass("ul_show");
+        $("body").toggleClass("over");
+    })
+</script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        autoplay:true,//等同于以下设置
+        loop:true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    });
+</script>
+</body>
+</html>

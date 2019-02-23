@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <!--通过快捷方式打开时全屏显示-->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!--隐藏状态栏-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank" />
+    <!--iPhone会将看起来像电话号码的数字添加电话连接，应当关闭-->
+    <meta name="format-detection" content="telephone=no" />
+    <title>首页</title>
+    <link rel="stylesheet" href="{$ym_theme_path}css/common.css">
+    <link rel="stylesheet" href="{$ym_theme_path}css/swiper.min.css">
+    <link rel="stylesheet" href="{$ym_theme_path}css/style.css">
+    <link rel="stylesheet" href="{$ym_theme_path}css/response.css">
+    <script src="{$ym_theme_path}js/jquery-3.3.1.min.js"></script>
+    <script src="{$ym_theme_path}js/swiper.min.js"></script>
+    <script src="{$ym_theme_path}js/js.js"></script>
+    <script type="text/javascript" src="{$ym_theme_path}js/jquery.SuperSlide.2.1.3.js"></script>
+    <script type="text/javascript" src="{$ym_theme_path}js/ifvisible.js"></script>
+</head>
+<body>
+<div class="main">
+    <!--**********************************************导航 start**********************************************-->
+    <header>
+        <div class="nav_show">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav">
+            <a href="{:url('home/Index/index')}" class="logo"><img src="{$ym_theme_path}images/logo.png" alt=""></a>
+            <ul>
+                <li class="{if(!isset($list_id))}active{/if}">
+                    <a href="{:url('home/index/index')}">推荐</a>
+                </li>
+                {volist name="menu_list" id="vo"}
+                <li class="{if((isset($list_id) && $list_id == $vo.id))}active{/if}">
+                    <a href="{:url('home/listn/index', ['id' =>$vo.id])}">{$vo.menu_name}</a>
+                </li>
+                {/volist}
+                <!--
+                <li class="active"><a href="">推荐</a></li>
+                <li><a href="">社会</a></li>
+                <li><a href="">娱乐</a></li>
+                <li><a href="">国内</a></li>
+                <li><a href="">国际</a></li>
+                <li><a href="">军事</a></li>
+                <li><a href="">体育</a></li>
+                <li><a href="">健康</a></li>
+                <li><a href="">笑话</a></li>
+                <li>
+                    <a href="">更多</a>
+                    <div class="posi_a clearfix">
+                        <a href="">游戏</a>
+                        <a href="">情感</a>
+                        <a href="">科技</a>
+                        <a href="">汽车</a>
+                        <a href="">星座</a>
+                        <a href="">时尚</a>
+                        <a href="">财经</a>
+                        <a href="">历史</a>
+                    </div>
+                </li>-->
+            </ul>
+        </div>
+    </header>
+    <!--**********************************************导航 end**********************************************-->

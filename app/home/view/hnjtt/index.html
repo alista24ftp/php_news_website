@@ -1,0 +1,174 @@
+{include file="public:header" /}
+<!--**********************************************list start**********************************************-->
+<div class="list">
+    <!-- 滚动图 start -->
+    <div class="slideTxtBox">
+        <div class="bd">
+            {volist name="news_slides" id="vo"}
+            <div>
+                <a href="{:url('home/News/index', ['id'=>$vo.n_id])}" title="{$vo.news_title}">
+                    <img src="{$vo.news_img}" alt="">
+                    <p>{$vo.news_title}</p>
+                </a>
+            </div>
+            {/volist}
+        </div>
+        <!--
+        <div class="hd">
+            <ul>
+                <li>知识</li>
+                <p></p>
+                <li>热点</li>
+                <p></p>
+                <li>生活</li>
+                <p></p>
+                <li>简讯</li>
+                <p></p>
+                <li>社会</li>
+                <p></p>
+                <li>快讯</li>
+            </ul>
+        </div>-->
+    </div>
+    <!-- 滚动图 end -->
+
+    <!-- 顶部新闻 start -->
+    <div class="recommend">
+        <h3><a href="{:url('home/News/index',['id'=>$news_top_recom[0]['n_id']])}">{$news_top_recom[0]['news_title']}</a></h3>
+        <div class="recommend_list">
+            <a href="{:url('home/News/index',['id'=>$news_top_recom[0]['n_id']])}" class="recommend_img">
+                <img src="{$news_top_recom[0]['news_img']}" alt="">
+            </a>
+            <ul>
+                <li><a href="{:url('home/News/index',['id'=>$news_top_recom[1]['n_id']])}">{$news_top_recom[1]['news_title']}</a></li>
+                <li><a href="{:url('home/News/index',['id'=>$news_top_recom[2]['n_id']])}">{$news_top_recom[2]['news_title']}</a></li>
+                <li><a href="{:url('home/News/index',['id'=>$news_top_recom[3]['n_id']])}">{$news_top_recom[3]['news_title']}</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="recommend">
+        <h3><a href="{:url('home/News/index',['id'=>$news_top_recom[4]['n_id']])}">{$news_top_recom[4]['news_title']}</a></h3>
+        <div class="recommend_list">
+            <a href="{:url('home/News/index',['id'=>$news_top_recom[4]['n_id']])}" class="recommend_img">
+                <img src="{$news_top_recom[4]['news_img']}" alt="">
+            </a>
+            <ul>
+                <li><a href="{:url('home/News/index',['id'=>$news_top_recom[5]['n_id']])}">{$news_top_recom[5]['news_title']}</a></li>
+                <li><a href="{:url('home/News/index',['id'=>$news_top_recom[6]['n_id']])}">{$news_top_recom[6]['news_title']}</a></li>
+                <li><a href="{:url('home/News/index',['id'=>$news_top_recom[7]['n_id']])}">{$news_top_recom[7]['news_title']}</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 顶部新闻 end -->
+
+    <!-- 新闻列表 start -->
+    {volist name="news_list" id="vo"}
+    <div class="photo_list">
+        <a href="{:url('home/News/index',['id'=>$vo.n_id])}" class="list_left"><img src="{$vo.news_img}" alt=""></a>
+        <a href="{:url('home/News/index',['id'=>$vo.n_id])}" class="list_right">
+            <p>{$vo.news_title}</p>
+            <div>
+                <!--<i>广告</i>-->
+                {if(!empty(trim($vo.news_source)))}<span>{$vo.news_source}</span>{/if}
+                <span class="times">{$vo.news_time|date="Y-m-d H:i:s",###}</span>
+            </div>
+        </a>
+    </div>
+    {/volist}
+    <!-- 新闻列表 end -->
+
+</div>
+<!--**********************************************list end**********************************************-->
+<!--**********************************************news_right start**********************************************-->
+<div class="news_right">
+    <div class="fixed_right">
+        <!-- 今日热搜 start -->
+        <div class="jrtt">
+            <div class="right_tit">
+                <h3>今日热搜</h3>
+                <!--<a href="javascript:;">换一换 <i></i></a>-->
+            </div>
+            <ul>
+                {volist name="news_today" id="vo"}
+                <li>
+                    <b>{$key+1}</b>
+                    <a href="{:url('home/News/index', ['id'=>$vo.n_id])}">{$vo.news_title}</a>
+                </li>
+                {/volist}
+
+            </ul>
+        </div>
+        <!-- 今日热搜 end -->
+
+        <!-- 广告1 start -->
+        <div class="adver_right">
+            <a href="{$ads[8][0]['plug_ad_url']}">
+                <img src="{$ads[8][0]['plug_ad_pic']}" alt="">
+            </a>
+        </div>
+        <!-- 广告1 end -->
+
+        <!-- 热门排行 start -->
+        <div class="jrtt">
+            <div class="right_tit"><h3>热门排行</h3></div>
+            <div class="right_photo">
+                {volist name="news_hot" id="vo"}
+                <div>
+                    <a href="{:url('home/News/index',['id'=>$vo.n_id])}">
+                        <img src="{$vo.news_img}" alt="">
+                    </a>
+                    <p><a href="{:url('home/News/index',['id'=>$vo.n_id])}">{$vo.news_title}</a></p>
+                </div>
+                {/volist}
+            </div>
+        </div>
+        <!-- 热门排行 end -->
+
+        <!-- 广告2 start -->
+        <div class="adver_right">
+            <a href="{$ads[9][0]['plug_ad_url']}">
+                <img src="{$ads[9][0]['plug_ad_pic']}" alt="">
+            </a>
+        </div>
+        <!-- 广告2 end -->
+
+        <!-- 猜你喜欢 start -->
+        <div class="jrtt">
+            <div class="right_tit"><h3>猜你喜欢</h3></div>
+            <div class="right_photo">
+                {volist name="news_recom" id="vo"}
+                <div>
+                    <p>
+                        <a href="{:url('home/News/index',['id'=>$vo.n_id])}">{$vo.news_title}</a>
+                    </p>
+                    <a href="{:url('home/News/index',['id'=>$vo.n_id])}">
+                        <img src="{$vo.news_img}" alt="">
+                    </a>
+                </div>
+                {/volist}
+            </div>
+        </div>
+        <!-- 猜你喜欢 end -->
+
+        <!-- 广告3 start -->
+        <div class="adver_right">
+            <a href="{$ads[10][0]['plug_ad_url']}">
+                <img src="{$ads[10][0]['plug_ad_pic']}" alt="">
+            </a>
+        </div>
+        <!-- 广告3 end -->
+
+        <div class="adver_right adver_art">
+            <p>免费声明：本站所有信息均搜集自互联网，并不代表本站观点，本站不对其真实合法性负责。如有信息侵犯了您的权益，本站将立即删除。</p>
+            <p>Copyright © 2019 ijiandan.net. All rights reserved.</p>
+            <p>版权所有 京ICP备08008880号-13</p>
+        </div>
+    </div>
+</div>
+<!--**********************************************news_right end**********************************************-->
+
+
+</div>
+
+
+{include file="public:footer2" /}

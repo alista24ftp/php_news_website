@@ -1,0 +1,28 @@
+{include file="public:head16" /}
+<section class="derived-banner">
+    <div class="container">
+        <div class="met-banner   banner-ny-h" data-height='' style=''>
+
+            {yf:ads name="home_slides" cid="5" /}
+            {foreach name="home_slides" key="k" item="vo"}
+            <div class="slick-slide">
+                <img class="cover-image" src="{$vo.plug_ad_pic|get_imgurl}"  sizes="(max-width: 767px) 767px" alt="{$vo.plug_ad_name}">
+
+            </div>
+            {/foreach}
+
+        </div>
+    </div>
+</section>
+
+<section class="met-show animsition">
+    <div class="container">
+        <div class="row">
+            <div class="met-editor  clearfix show-editor">
+                {yf:singlepage name="menu" menuid="16" /}
+                <div><h3 style="text-align: center;"><span style="font-family: 宋体, SimSun; color: rgb(192, 0, 0);"><strong>{$menu.menu_name}</strong><br/></span></h3>{$menu.menu_content}</div>
+            </div>
+        </div>
+    </div>
+</section>
+{include file="public:footer" /}
