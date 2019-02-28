@@ -14,6 +14,7 @@ $basename = Request::instance()->root();
 if (pathinfo($basename, PATHINFO_EXTENSION) == 'php') {
     $basename = dirname($basename);
 }
+
 $configs= [
   // +----------------------------------------------------------------------
   // | 应用设置
@@ -147,6 +148,7 @@ $configs= [
         '__DATA__'   => $basename . '/data',
         '__PUBLIC__' => $basename . '/public',
         '__UPLOAD__'=> $basename . '/data/upload',
+
     ],
   // 默认跳转页面对应的模板文件
     'dispatch_success_tmpl'  => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',

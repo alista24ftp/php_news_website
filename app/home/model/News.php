@@ -39,23 +39,35 @@ class News extends Model
         return $toutiaos;
     }
 
-    public function getListAll($columnviceid=null, $limit=10)
+    public function getListAll($columnviceid=null, $limit=10, $ispage=false, $pagesize=null)
     {
-        if(!isset($columnviceid)){
-            $list = Db::name("news")
-                ->order("news_time","desc")
-                ->limit($limit)
-                ->select();
+        $where = [];
+        if(isset($columnviceid) && !is_null($columnviceid)){
+            $where['news_columnviceid'] = $columnviceid;
+        }
 
+        if($ispage){
+            $pagesize = isset($pagesize) && !is_null($pagesize) ? intval($pagesize) : config('paginate.list_rows');
+            $config = [];
+            $list = Db::name("news")
+                ->where($where)
+                ->order('news_time', 'desc')
+                ->paginate($pagesize, false, $config);
+            $show = $list->render();
+            return [
+                'list'=>$list,
+                'show'=>$show
+            ];
         }else{
             $list = Db::name("news")
-                ->where("news_columnviceid", $columnviceid)
+                ->where($where)
                 ->order('news_time', 'desc')
                 ->limit($limit)
                 ->select();
+            return [
+                'list'=>$list
+            ];
         }
-
-        return $list;
     }
 
     public function getHomeSlides()

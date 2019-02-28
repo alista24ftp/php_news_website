@@ -25,7 +25,7 @@ class Index extends Base
             500,
             null,
             null);
-		$newsList = $newsModel->getListAll(null,30);
+		$newsList = $newsModel->getListAll(null,30, true, 30);
 		$newsTodayHot = $newsModel->getRand(8,
             'n_id,news_title',
             'news_hits',
@@ -47,7 +47,8 @@ class Index extends Base
 
 		$this->assign('news_slides', $newsSlides);
 		$this->assign('news_top_recom', $newsTopRecom);
-		$this->assign('news_list', $newsList);
+		$this->assign('news_list', $newsList['list']);
+		$this->assign('page_html', $newsList['show']);
 		$this->assign('news_today', $newsTodayHot);
 		$this->assign('news_hot', $newsHot);
 		$this->assign('news_recom', $newsRecom);
