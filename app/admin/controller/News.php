@@ -10,6 +10,7 @@ namespace app\admin\controller;
 
 use think\Db;
 use app\admin\model\News as NewsModel;
+use app\admin\model\Menu as MenuModel;
 
 class News extends Base
 {
@@ -197,10 +198,12 @@ class News extends Base
 			}
 		}
 		$flagdata=implode(',',$flag);
+		$menuModel = new MenuModel;
 		$sl_data=array(
 			'news_title'=>input('news_title'),
 			'news_titleshort'=>input('news_titleshort',''),
 			'news_columnid'=>input('news_columnid'),
+			'news_columnviceid'=>$menuModel->parentId(input('news_columnid')),
 			'news_flag'=>$flagdata,
 			'news_zaddress'=>input('news_zaddress',''),
 			'news_key'=>input('news_key',''),
@@ -348,11 +351,13 @@ class News extends Base
 			}
 		}
 		$flagdata=implode(',',$flag);
+		$menuModel = new MenuModel;
 		$sl_data=array(
 			'n_id'=>input('n_id'),
 			'news_title'=>input('news_title'),
 			'news_titleshort'=>input('news_titleshort',''),
 			'news_columnid'=>input('news_columnid'),
+			'news_columnviceid'=>$menuModel->parentId(input('news_columnid')),
 			'news_flag'=>$flagdata,
 			'news_zaddress'=>input('news_zaddress',''),
 			'news_key'=>input('news_key',''),
@@ -464,9 +469,14 @@ class News extends Base
         $news_columnid=input('news_columnid');
         $n_id=input('n_id');
         $news_model=new NewsModel;
+        $menu_model=new MenuModel;
         $data=$news_model->find($n_id);
         if($data){
-            $rst=$news_model->where('n_id',$n_id)->update(['news_columnid'=>$news_columnid]);
+            $rst=$news_model->where('n_id',$n_id)
+                ->update([
+                    'news_columnid'=>$news_columnid,
+                    'news_columnviceid'=>$menu_model->parentId($news_columnid)
+                ]);
             if($rst!==false){
                 $this->success('更新栏目成功');
             }else{
