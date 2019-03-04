@@ -21,4 +21,10 @@ class Menu extends Model
 	{
 		return $this->hasMany('News','news_columnid')->bind('menu_name');
 	}
+	
+	public function parentId($id)
+	{
+	    $parentid = $this->find($id)['parentid'];
+	    return $parentid != 0 ? $parentid : $id;
+	}
 }
