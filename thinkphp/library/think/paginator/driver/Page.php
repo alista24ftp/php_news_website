@@ -60,21 +60,29 @@ class Page extends Paginator
             'slider' => null,
             'last'   => null
         ];
-        $side   = 1;
-        $window = $side * 2;
-        if ($this->lastPage < $window + 2) {
+        
+        $side = 2;
+        if($this->lastPage <= ($side * 2)){
             $block['first'] = $this->getUrlRange(1, $this->lastPage);
-        } elseif ($this->currentPage <= $window) {
-            $block['first'] = $this->getUrlRange(1, 2);
-            $block['last']  = $this->getUrlRange($this->lastPage - 1, $this->lastPage);
-        } elseif ($this->currentPage > ($this->lastPage - $window)) {
-            $block['first'] = $this->getUrlRange(1, 2);
-            $block['last']  = $this->getUrlRange($this->lastPage - 1, $this->lastPage);
-        } else {
-            $block['first']  = $this->getUrlRange($this->currentPage-1, $this->currentPage);
-            //$block['slider'] = $this->getUrlRange($this->currentPage - $side, $this->currentPage + $side);
-            $block['last']   = $this->getUrlRange($this->lastPage - 1, $this->lastPage);
+        }else if($this->currentPage == 1 || $this->currentPage == $this->lastPage){
+            $block['first'] = $this->getUrlRange(1, $side);
+            $block['last'] = $this->getUrlRange($this->lastPage - $side + 1, $this->lastPage);
+        }else{
+            if($this->currentPage - 2 <= $side && $this->currentPage + 1 + $side >= $this->lastPage){
+                $block['first'] = $this->getUrlRange(1, $this->lastPage);
+            }else if($this->currentPage - 2 <= $side){
+                $block['first'] = $this->getUrlRange(1, $this->currentPage + 1);
+                $block['last'] = $this->getUrlRange($this->lastPage - $side + 1, $this->lastPage);
+            }else if($this->currentPage + 1 + $side >= $this->lastPage){
+                $block['first'] = $this->getUrlRange(1, $side);
+                $block['last'] = $this->getUrlRange($this->currentPage - 1, $this->lastPage);
+            }else{
+                $block['first'] = $this->getUrlRange(1, 2);
+                $block['slider'] = $this->getUrlRange($this->currentPage-1, $this->currentPage+1);
+                $block['last'] = $this->getUrlRange($this->lastPage-1, $this->lastPage);
+            }
         }
+        
         $html = '';
         if (is_array($block['first'])) {
             $html .= $this->getUrlLinks($block['first']);
