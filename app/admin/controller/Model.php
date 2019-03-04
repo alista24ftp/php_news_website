@@ -850,7 +850,8 @@ class Model extends Base
             $this->error('不存在的模型');
         }
         $model_cid=input($this->cms_cid,0);
-        $data=array_reduce($this->cms_fields, create_function('$v,$w', '$v[$w["name"]]=$w["default"];return $v;'));
+        // $data=array_reduce($this->cms_fields, create_function('$v,$w', '$v[$w["name"]]=$w["default"];return $v;'));
+        $data=array_reduce($this->cms_fields, function($v, $w){ $v[$w["name"]]=$w["default"]; return $v; });
         $fields_data=$this->handle_data($model_id,$this->cms_allfields,$data);
 		$this->assign('model_id',$model_id);
 		$this->assign('model',$this->cms_model);
