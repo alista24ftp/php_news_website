@@ -1,6 +1,6 @@
 <?php
 namespace app\crawl\controller;
-ini_set('max_execution_time', '1800');
+ini_set('max_execution_time', '0');
 ini_set('post_max_size', '0');
 ini_set('memory_limit', '-1');
 
@@ -35,8 +35,16 @@ class Crawl extends Controller
     public function test(CrawlHelper $crawl)
     {
         $name = 'eastday';
-        $crawl->test();
+        $html = $crawl->test();
+        //dump($img); exit;
+        $this->assign('html', $html);
+        return $this->fetch();
     }
 
-
+    public function transDbContentImg(CrawlHelper $crawl)
+    {
+        $name = 'eastday';
+        $status = $crawl->transDbContentImg();
+        echo $status;
+    }
 }

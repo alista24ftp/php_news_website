@@ -11,12 +11,6 @@ class News extends Model
 
     public function insertIntoDb($allNews)
     {
-        foreach($allNews as $k=>$news){
-            $allNews[$k] = $this->toTableFormat($news);
-        }
-
-        //dump($allNews); exit;
-
         Db::startTrans();
         try{
             Db::name('news')->insertAll($allNews);
@@ -34,22 +28,18 @@ class News extends Model
         return $mostRecentTime;
     }
 
-    private function toTableFormat($news)
+    public function getNews($field, $where=[])
     {
-        return [
-            'news_title'=>trim($news['title']),
-            'news_columnid'=>$news['columnid'],
-            'news_columnviceid'=>$news['columnviceid'],
-            'news_auto'=>1,
-            'news_source'=>$news['source'],
-            'news_content'=>trim($news['content']),
-            'news_scontent'=>trim($news['scontent']),
-            'news_img'=>$news['image'],
-            'news_pic_type'=>1,
-            'news_time'=>$news['pdate'],
-            'news_back'=>0,
-            'news_open'=>1,
-            'comment_status'=>1
-        ];
+        return $this->field($field)->where($where)->select();
+    }
+
+    public function updateNews($list)
+    {
+        return $this->saveAll($list);
+    }
+
+    public function deleteNews($ids)
+    {
+        return $this::destroy($ids);
     }
 }

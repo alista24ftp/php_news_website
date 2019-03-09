@@ -7,7 +7,7 @@
  */
 
 namespace app\crawl\crawl;
-ini_set('max_execution_time', '1800');
+ini_set('max_execution_time', '0');
 ini_set('post_max_size', '0');
 ini_set('memory_limit', '-1');
 
@@ -49,7 +49,7 @@ class Crawl
                 }
 
                 // write back to corresponding JSON file
-                $this->toJsonFile($json['json'], __DIR__.'/../'.$json['path']);
+                //$this->toJsonFile($json['json'], __DIR__.'/../'.$json['path']);
                 return 'Crawl successful';
             }catch(\Exception $e){
                 return $e->getTraceAsString();
@@ -62,7 +62,9 @@ class Crawl
     public function crawl($jsonName, $catIndex)
     {
         $categories = $this->jsons[$jsonName]['json']['categories'];
+        $remoteHost = $this->jsons[$jsonName]['json']['host'];
         $category = $categories[$catIndex];
+        $category['last_update'] = $this->newsModel->getMostRecentTime($category['columnviceid']);
 
         $links = [];
         $numNews = 0;
@@ -136,14 +138,58 @@ class Crawl
         // update timestamp
 
         //dump($links);
-        $this->newsModel->insertIntoDb($links);
+        $insertLinks = [];
+        foreach($links as $i=>$link){
+            $link = $this->toTableFormat($link, $remoteHost);
+            if(!$this->doesntExist($link['news_img']) && !$this->doesntExist($link['news_content']))
+                array_push($insertLinks, $link);
+        }
+        $this->newsModel->insertIntoDb($insertLinks);
         unset($category['imgRule']);
         $this->updateTimestamp($this->jsons[$jsonName]['json'], $catIndex);
     }
 
+    public function transDbContentImg()
+    {
+        $newsList = $this->newsModel->getNews('n_id,news_img,news_content');
+        if(!$newsList) return 'No news';
+        $upList = [];
+        $delList = [];
+        foreach($newsList as $i=>$news){
+            $news['news_content'] = $this->parseContent(htmlspecialchars_decode($news['news_content']));
+            $news['news_img'] = $this->downloadImg($news['news_img']);
+
+            if(!$this->doesntExist($news['news_content']) && !$this->doesntExist($news['news_img'])){
+                array_push($upList, [
+                    'n_id'=>$news['n_id'],
+                    'news_img'=>$news['news_img'],
+                    'news_content'=>$news['news_content']
+                ]);
+            }else{
+                array_push($delList, $news['n_id']);
+            }
+        }
+        //dump($upList); exit;
+        $updateStatus = $this->newsModel->updateNews($upList);
+        if(!$updateStatus) return 'Update failed';
+
+        if(count($delList) > 0){
+            $delCount = $this->newsModel->deleteNews($delList);
+            if($delCount <= 0) return 'Delete failed';
+        }
+
+        return 'Transform DB Success';
+
+    }
+
     public function test()
     {
-        $this->crawl('sina', 26);
+        $url = 'http://mini.eastday.com/a/190307142826825.html';
+        $pageHtml = $this->getHtml($url);
+        $content = $this->getValWithDOMCrawler(['useDOMCrawler'=>true, 'selector'=>".J-contain_detail_cnt"], $pageHtml);
+        $content = $this->parseContent($content, $this->jsons['eastday']['json']['host']);
+
+        return $content;
     }
 
     // Getters/Setters
@@ -311,11 +357,13 @@ class Crawl
 
     private function checkLastUpdated($category, $timestamp)
     {
+        /*
         if(isset($category['updated_at']) && !$this->doesntExist($category['updated_at'])){
             $lastCrawlDate = $category['updated_at'];
         }else{
             $lastCrawlDate = $this->newsModel->getMostRecentTime($category['columnviceid']);
-        }
+        }*/
+        $lastCrawlDate = $category['last_update'];
 
         return $lastCrawlDate < $timestamp;
     }
@@ -543,7 +591,22 @@ class Crawl
         return $response;
     }
 
-    public function getJson($url){
+    public function curlGet($url)
+    {
+        $curl = curl_init(); // 启动一个CURL会话
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HEADER,0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER,false);// 跳过证书检查
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST,2);// 从证书中检查SSL加密算法是否存在
+        $tmpInfo = curl_exec($curl);     //返回api的json对象
+        //关闭URL请求
+        curl_close($curl);
+        return $tmpInfo;    //返回json对象
+    }
+
+    public function getJson($url)
+    {
         $context = stream_context_create([
             'http'=>[
                 'ignore_errors'=>true,
@@ -553,5 +616,57 @@ class Crawl
         ]);
         $json = @file_get_contents($url, false, $context);
         return $json;
+    }
+
+    public function downloadImg($imgUrl, $remoteHost=null)
+    {
+        $img = $this->curlGet($this->parseImgUrl($imgUrl, $remoteHost));
+        $uploadPath = './data/upload/'.date('Y-m-d');
+        $img_name = $uploadPath.'/'.uniqid().'.jpg';
+        if(!is_dir($uploadPath)){
+            mkdir($uploadPath);
+        }
+        $img=file_put_contents($img_name,$img);
+        return boolval($img) ? substr($img_name,1,strlen($img_name)) : null;
+    }
+
+    public function parseImgUrl($imgUrl, $remoteHost=null)
+    {
+        $imgUrl = preg_replace('/^\/\//', 'http://', $imgUrl);
+        if(isset($remoteHost) && !is_null($remoteHost))
+            $imgUrl = preg_replace('/^\//', $remoteHost.'/', $imgUrl);
+        return $imgUrl;
+    }
+
+    public function parseContent($content, $remoteHost=null)
+    {
+        $content = preg_replace_callback('/<img.*?src=\"(.*?)\".*?>/', function($matches) use ($remoteHost) {
+            if(!isset($matches[1]) || empty($matches[1]))
+                return '';
+            $imgUrl = $matches[1];
+
+            $newImgUrl = $this->downloadImg($imgUrl, $remoteHost);
+            return '<img src="'.$newImgUrl.'">';
+        }, $content);
+        return $content;
+    }
+
+    public function toTableFormat($news, $remoteHost)
+    {
+        return [
+            'news_title'=>trim($news['title']),
+            'news_columnid'=>$news['columnid'],
+            'news_columnviceid'=>$news['columnviceid'],
+            'news_auto'=>1,
+            'news_source'=>$news['source'],
+            'news_content'=>$this->parseContent(trim($news['content']), $remoteHost),
+            'news_scontent'=>trim($news['scontent']),
+            'news_img'=>$this->downloadImg($news['image'], $remoteHost),
+            'news_pic_type'=>1,
+            'news_time'=>$news['pdate'],
+            'news_back'=>0,
+            'news_open'=>1,
+            'comment_status'=>1
+        ];
     }
 }
